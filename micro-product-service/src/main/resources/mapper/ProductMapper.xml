@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mapper.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eking.product.infrastructure.mybatis.impl.dao.ProductMapper">
+
+    <resultMap id="product" type="com.eking.product.domain.model.Product">
+        <id column="id" property="id"></id>
+        <result column="id" property="id"/>
+        <result column="product_name" property="productName"/>
+        <result column="total_number" property="totalNumber"/>
+        <result column="product_describe" property="productDescribe"/>
+        <result column="available_number" property="availableNumber"/>
+    </resultMap>
+    <select id="get" resultMap="product" resultType="com.eking.product.domain.model.Product">
+        select * from product
+        <where>
+            id=#{id}
+        </where>
+    </select>
+    <insert id="insert" parameterType="com.eking.product.domain.model.Product" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO product(
+        product_name,
+        total_number,
+        product_describe,
+        available_number)
+        VALUES (
+        #{productName},
+        #{totalNumber},
+        #{productDescribe},
+        #{availableNumber}
+        )
+    </insert>
+    <update id="update" parameterType="com.eking.product.domain.model.Product" useGeneratedKeys="true" keyProperty="id">
+        UPDATE product
+        SET available_number = available_number-#{availableNumber}
+        WHERE id=#{id};
+    </update>
+</mapper>

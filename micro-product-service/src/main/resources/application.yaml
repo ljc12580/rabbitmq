@@ -1,0 +1,21 @@
+spring:
+    datasource:
+        name: product
+        url: jdbc:mysql://10.70.21.75:3306/event_store_product
+        username: root
+        password: hello1234!
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+    aop:
+        auto: true
+    application:
+      name: eking.micro.javaframework.product
+#mybatis:
+#   mapper-locations: classpath:mapper/*Mapper.xml
+mybatis:
+    mapperLocations: classpath:/mapper/*.xml
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.70.21.78:8761/eureka/,10.70.21.79:8761/eureka/
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mapper.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eking.product.infrastructure.mybatis.impl.dao.ProductOrderMapper">
+
+    <resultMap id="productOrder" type="com.eking.product.domain.model.ProductOrder">
+        <id column="id" property="id"></id>
+        <result column="id" property="id"/>
+        <result column="order_id" property="orderId"/>
+        <result column="product_id" property="productId"/>
+        <result column="product_number" property="productNumber"/>
+        <result column="product_state" property="productState"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.eking.product.domain.model.ProductOrder" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO product_order(
+        order_id,
+        product_id,
+        product_number)
+        VALUES(
+        #{orderId},
+        #{productId},
+        #{productNumber}
+        )
+    </insert>
+    <update id="update" parameterType="com.eking.product.domain.model.ProductOrder" useGeneratedKeys="true"
+            keyProperty="id">
+        UPDATE product_order
+        SET product_state = #{productState}
+        <where>
+            order_id=#{orderId} AND product_id=#{productId}
+        </where>
+    </update>
+    <select id="getProduct" resultType="Integer">
+        select count(1) from product_order
+        <where>
+            order_id=#{arg0} AND product_id=#{arg1}
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eking.wallet.infrastructure.mybatis.impl.Wallet.WalletMapper">
+
+    <resultMap id="wallet" type="com.eking.wallet.domain.wallet.model.Wallet">
+        <id column="userid" property="userid"></id>
+        <!--<result column="userid" property="userid"/>-->
+        <result column="money" property="money"/>
+        <result column="create_time" property="pay_time"/>
+    </resultMap>
+
+    <!--<insert id="insertOrderInfo" parameterType="hna.order.model.Order" useGeneratedKeys="true" keyProperty="orderId">-->
+        <!--insert into t_order(orderName,orderAmount,orderNumber,orderStatus,saleChannel,orderType,orderRegTime,orderUpTime)values(#{orderName},#{orderAmount},#{orderNumber},#{orderStatus},#{saleChannel},#{orderType},#{orderRegTime},#{orderUpTime});;-->
+    <!--</insert>-->
+    <select id="query" resultType="com.eking.wallet.domain.wallet.model.Wallet">
+    select * from wallet where userid=#{userid}
+    </select>
+    <!--<insert id="insertUserInfo" parameterType="hna.order.model.User" useGeneratedKeys="true" keyProperty="id">-->
+    <!--insert into user(name,password,regTime,upTime,debit,payPassword)values(#{name},#{password},#{regTime},#{upTime},#{debit},#{payPassword});;-->
+    <!--</insert>-->
+    <!--<delete id="deleteUserInfo" parameterType="hna.order.model.User">-->
+    <!--delete from user where id=#{id};-->
+    <!--</delete>-->
+    <!--<update id="updateDebit" parameterType="hna.order.model.User" >-->
+    <!--update user set debit=#{debit} where id=#{id};-->
+    <!--</update>-->
+    <!--<update id="updatePassword" parameterType="hna.order.model.User" >-->
+    <!--update user set password=#{password} where id=#{id};-->
+    <!--</update>-->
+    <!--<update id="updatePayPassword" parameterType="hna.order.model.User" >-->
+    <!--update user set payPassword=#{payPassword} where id=#{id};-->
+    <!--</update>-->
+    <update id="update" parameterType="com.eking.wallet.domain.wallet.model.Wallet" >
+    update wallet set money=#{money} where userid=#{userid};
+    </update>
+</mapper>

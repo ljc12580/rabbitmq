@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eking.micro.javaframework.order
+  aop:
+    auto: true
+server:
+  port:  8088
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.70.21.78:8761/eureka/,10.70.21.79:8761/eureka/
